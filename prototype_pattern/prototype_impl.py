@@ -1,5 +1,5 @@
 from copy import deepcopy
-from .prototype import Prototype
+import prototype as pt
 
 #Let us say we have three levels defined in the dict.
 levels = {
@@ -29,7 +29,7 @@ class Knight:
         #Interact with db here. Let us consider following fields are from a db.
         self.power = levels[level]["power"]
         self.range = levels[level]["drange"]
-        self.flexibility = levels[level]["flexibilty"]
+        self.flexibility = levels[level]["flexibility"]
         self.speed = levels[level]["speed"]
    
 #If we use the above class and we go with these levels, we will initialize the class every time.
@@ -40,13 +40,13 @@ knigh2_level2 = Knight(1)
 #Now consider we were interacting with db each time, it will kill our application.
 #To avoid that, we store these prototypes in the RAM and clone them.
 
-class KnightPPattern(Prototype):
+class KnightPPattern(pt.Prototype):
     def __init__(self, level):
         self.unit_type = "knight" #Saving this if we have more such classes.
         #Interact with db here.
         self.power = levels[level]["power"]
         self.range = levels[level]["drange"]
-        self.flexibility = levels[level]["flexibilty"]
+        self.flexibility = levels[level]["flexibility"]
         self.speed = levels[level]["speed"]
 
     def clone(self):
